@@ -73,19 +73,21 @@ Module.register("MMM-SCH", {
     }
 
     let routesHTML = "";
-    if (this.config.showRoutes && corbett.popular_routes) {
+    if (this.config.showRoutes && corbett.popular_routes && corbett.popular_routes.length > 0) {
+      const routesToShow = corbett.popular_routes.slice(0, 3);
       routesHTML = `
         <div class="mmm-sch-routes">
           <h4><i class="fas fa-route"></i> Popular Routes</h4>
           <ul>
-            ${corbett.popular_routes.map(route => `<li>${route}</li>`).join("")}
+            ${routesToShow.map(route => `<li>${route}</li>`).join("")}
           </ul>
+          ${corbett.popular_routes.length > 3 ? `<div class="more-routes">+${corbett.popular_routes.length - 3} more routes</div>` : ''}
         </div>
       `;
     }
 
     let seasonsHTML = "";
-    if (this.config.showSeasons && corbett.best_seasons) {
+    if (this.config.showSeasons && corbett.best_seasons && corbett.best_seasons.length > 0) {
       seasonsHTML = `
         <div class="mmm-sch-seasons">
           <h4><i class="fas fa-calendar"></i> Best Seasons</h4>
