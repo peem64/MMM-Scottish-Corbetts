@@ -4,7 +4,10 @@
   "description": "MagicMirror module displaying Scottish Corbetts",
   "main": "MMM-SCH.js",
   "scripts": {
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "echo \"No tests specified\" && exit 0",
+    "build": "echo \"No build process needed for MagicMirror module\" && exit 0",
+    "install": "npm install --only=production",
+    "postinstall": "echo \"MMM-SCH module installed successfully\""
   },
   "keywords": ["MagicMirror", "Scottish", "Corbetts", "Mountains", "Hiking"],
   "author": "MMM-SCH Team",
@@ -15,5 +18,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/your-username/MMM-SCH.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
