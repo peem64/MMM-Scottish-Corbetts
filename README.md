@@ -13,16 +13,12 @@ A beautiful MagicMirror module that displays information about Scottish Corbetts
 - 📱 **Responsive**: Works on all MagicMirror display sizes
 - 🪟 **Right-Side Optimized**: Compact layout perfect for MagicMirror right column
 
-## MagicMirror Installation
+## Installation
 
 ### Prerequisites
 
 1. **MagicMirror² Installation**: Ensure you have MagicMirror² installed and running
-   - Follow the [official MagicMirror² installation guide](https://docs.magicmirror.builders/getting-started/installation.html)
-   - Verify your MagicMirror is working before installing this module
-
-2. **Node.js and npm**: Required for dependency management
-   - Node.js version 16 or higher recommended
+2. **Node.js**: Version 16 or higher recommended
 
 ### Step 1: Clone the Module
 
@@ -35,8 +31,6 @@ cd MMM-SCH
 ```
 
 ### Step 2: Install Dependencies
-
-Install the required Node.js dependencies:
 
 ```bash
 npm install
@@ -51,32 +45,15 @@ npm install
 
 #### Run Database Migrations
 1. In your Supabase project dashboard, go to the SQL Editor
-2. Execute the SQL files in order:
-   - First run `supabase/migrations/20250703195721_yellow_mode.sql`
-   - Then run `supabase/migrations/20250703195732_pink_fog.sql`
+2. Copy and run the SQL from `database/schema.sql` to create the corbetts table
+3. Copy and run the SQL from `database/sample_data.sql` to populate with sample data
 
 #### Get Your Supabase Credentials
 1. Go to Project Settings → API
 2. Copy your Project URL
 3. Copy your anon/public key
 
-### Step 4: Configure Environment Variables
-
-Create a `.env` file in the MMM-SCH directory:
-
-```bash
-cd ~/MagicMirror/modules/MMM-SCH
-cp .env.example .env
-```
-
-Edit the `.env` file with your Supabase credentials:
-
-```env
-VITE_SUPABASE_URL=your_supabase_project_url_here
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
-```
-
-### Step 5: Add Corbett Images
+### Step 4: Add Corbett Images
 
 Create the images directory and add your corbett photos:
 
@@ -91,17 +68,7 @@ Copy your corbett images to this directory. Images should be:
 - **File Size**: 200-500KB per image
 - **Naming**: Use lowercase, hyphen-separated names matching the `image_filename` field in the database
 
-Example structure:
-```
-~/MagicMirror/modules/MMM-SCH/images/corbetts/
-├── ben-more-assynt.jpg
-├── schiehallion.jpg
-├── the-cobbler.jpg
-├── goat-fell.jpg
-└── [additional corbett images]
-```
-
-### Step 6: Configure MagicMirror
+### Step 5: Configure MagicMirror
 
 Add the module to your MagicMirror config file (`~/MagicMirror/config/config.js`):
 
@@ -123,9 +90,7 @@ Add the module to your MagicMirror config file (`~/MagicMirror/config/config.js`
 }
 ```
 
-### Step 7: Restart MagicMirror
-
-Restart your MagicMirror to load the new module:
+### Step 6: Restart MagicMirror
 
 ```bash
 cd ~/MagicMirror
@@ -138,7 +103,7 @@ Or if running as a service:
 sudo systemctl restart magicmirror
 ```
 
-## MagicMirror Configuration Options
+## Configuration Options
 
 | Option | Description | Default | Recommended |
 |--------|-------------|---------|-------------|
@@ -161,8 +126,6 @@ The module is optimized for right-side placement:
 - **`bottom_right`**: Good alternative if top_right is occupied
 - **`middle_right`**: Works well for larger displays
 
-Avoid left-side positions as the module is optimized for narrow, vertical layouts.
-
 ## Troubleshooting
 
 ### Module Not Appearing
@@ -172,7 +135,7 @@ Avoid left-side positions as the module is optimized for narrow, vertical layout
 4. Restart MagicMirror completely
 
 ### Database Connection Issues
-1. Verify your `.env` file has correct Supabase credentials
+1. Verify your Supabase credentials in the config
 2. Check that your Supabase project is active
 3. Ensure the database migrations were run successfully
 4. Test the connection by checking the browser console for errors
@@ -183,30 +146,6 @@ Avoid left-side positions as the module is optimized for narrow, vertical layout
 3. Ensure images are readable (correct permissions)
 4. The module will show placeholder images if local images aren't found
 
-### Performance Issues
-1. Reduce `maxDescriptionLength` for faster rendering
-2. Optimize image file sizes (aim for 200-500KB)
-3. Increase `updateInterval` if needed
-
-## Development Mode
-
-For development and testing outside of MagicMirror:
-
-```bash
-cd ~/MagicMirror/modules/MMM-SCH
-npm run dev
-```
-
-This will start a development server at `http://localhost:5173` where you can preview the module.
-
-## Complete Database Setup
-
-The included sample data contains 10 corbetts. To complete the database with all 222 Scottish Corbetts:
-
-1. Obtain complete corbett data (elevation, coordinates, descriptions, etc.)
-2. Add entries to the `corbetts` table following the existing schema
-3. Ensure each corbett has a corresponding image file
-
 ## Database Schema
 
 The corbetts table includes:
@@ -215,27 +154,6 @@ The corbetts table includes:
 - **Seasonal info**: best seasons for climbing
 - **Practical info**: grid reference, nearest town, parking
 - **Media**: image filename
-
-## Support
-
-For issues specific to MagicMirror integration:
-
-1. Check the [MagicMirror² documentation](https://docs.magicmirror.builders/)
-2. Verify your MagicMirror installation is working
-3. Check module logs and browser console for errors
-4. Create an issue on the GitHub repository with:
-   - MagicMirror version
-   - Node.js version
-   - Error messages
-   - Configuration used
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test with MagicMirror
-5. Submit a pull request
 
 ## License
 
