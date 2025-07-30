@@ -11,9 +11,12 @@ export const useCorbett = () => {
     try {
       setIsLoading(true);
       setError(null);
+      console.log('Fetching current corbett...');
       const currentCorbett = await CorbettService.getCurrentCorbett();
+      console.log('Fetched corbett:', currentCorbett);
       setCorbett(currentCorbett);
     } catch (err) {
+      console.error('Error fetching corbett:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch corbett');
     } finally {
       setIsLoading(false);

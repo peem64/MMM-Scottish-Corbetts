@@ -3,6 +3,7 @@ import { Corbett } from '../types/corbett';
 
 export class CorbettService {
   static async getAllCorbetts(): Promise<Corbett[]> {
+    console.log('Fetching all corbetts from database...');
     const { data, error } = await supabase
       .from('corbetts')
       .select('*')
@@ -13,6 +14,7 @@ export class CorbettService {
       throw error;
     }
     
+    console.log(`Found ${data?.length || 0} corbetts in database`);
     return data || [];
   }
 
