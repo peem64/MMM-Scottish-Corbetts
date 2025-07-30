@@ -5,6 +5,7 @@
   "main": "MMM-SCH.js",
   "scripts": {
     "test": "echo \"No tests specified\" && exit 0",
+    "dev": "vite",
     "build": "echo \"No build process needed for MagicMirror module\" && exit 0",
     "install": "npm install --only=production",
     "postinstall": "echo \"MMM-SCH module installed successfully\""
